@@ -18,7 +18,7 @@ dotenv.config()
 export const token_secret = process.env.TOKEN_SECRET
 export const global_env = process.env.GLOBAL_ENV
 const app = express()
-const PORT = process.env.PORT || 5000
+const PORT = process.env.PORT
 
 //*________________________________________________
 
@@ -51,7 +51,7 @@ app.use(notFound)
 const start = async () => {
     try {
       await connectDB(process.env.MONGO_URI)
-      app.listen(PORT, () =>
+      app.listen(PORT || 5000, () =>
         console.log(`Server is listening on: http://localhost:${PORT}`)
       );
     } catch (error) {
